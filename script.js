@@ -8,6 +8,7 @@ const FIXED_URL_PATHS = {
 
 const main = () => {
     addEventHandlers()
+    
 }
 
 window.addEventListener("load", main)
@@ -51,6 +52,7 @@ const displayImages = (images) => {
         const albumCard = albumCardsAsList[i]
         // the remote image
         const image = images[i]
+        // display image
         displayImage(image, albumCard)
         i += 1
     }
@@ -100,7 +102,23 @@ const addEventHandlers = () => {
     getUIButtonLoadImages().addEventListener("click", handleClickLoadImages)
     // load secondary images button
     getUIButtonLoadSecondaryImages().addEventListener("click", handleClickLoadSecondaryImages)
+    // hide button in album cards
+    onHideButtonClickHideCard()
 }
+
+const onHideButtonClickHideCard = () => {
+    // hide button in album cards
+    const hideButtons = getUIHideCardButton()
+    hideButtons.forEach(hideButton => {
+        hideButton.addEventListener("click", (event) => {
+            const parentCol = hideButton.closest(".col-md-4")
+            // hide the "card" but more specifically the column
+            // where the card is contained in
+            parentCol.classList.add("d-none")
+        })
+    })
+}
+
 
 
 const getUIButtonLoadImages = () => {
@@ -122,6 +140,10 @@ const getUIAlbumCards = () => {
 
 const getUIAlbumCardsAsList = () => {
     return getUIAlbumContainer().querySelectorAll(".card")
+}
+
+const getUIHideCardButton = () => {
+    return getUIAlbumContainer().querySelectorAll("[data-app-role='hide-card']")
 }
 
 const getPexelsUrl = (url_path="") => {
