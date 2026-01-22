@@ -22,7 +22,8 @@ const loadImages = async () => {
         displayImages(images)
     }
     catch (err) {
-        throw new Error("error during load or display images. status: ", err)
+        console.log(err)
+        throw new Error("error during load or display images: ", err)
     }
 }
 
@@ -35,7 +36,8 @@ const loadSecondaryImages = async () => {
         displayImages(images)
     }
     catch (err) {
-        throw new Error("error during load or display images. status: ", err)
+        console.log(err)
+        throw new Error("error during load or display images: ", err)
     }
 }
 
@@ -62,6 +64,7 @@ const displayImage = (newImage, albumCard) => {
     // replace the current image url with the image url
     // of the given image
     albumCard.querySelector("img").src = newImage.src.original
+    albumCard.querySelector("small.text-muted").innerText = newImage.id
     // console.log(newImage)
 }
 
