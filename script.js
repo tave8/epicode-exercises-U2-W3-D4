@@ -116,6 +116,7 @@ const onTypeInputSearchImagesDisplayImages = () => {
   new TypingDelayer({
     // the input CSS selector
     inputSelector: "#inputSearchImages",
+    minChars: 3,
     // reference to the callback
     onTypingStopped: async (userSearch, moreInfo) => {
       const { photos: images } = await searchRemoteImages(userSearch);
