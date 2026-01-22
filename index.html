@@ -128,6 +128,7 @@
     </header>
     <main role="main">
       <section class="jumbotron text-center">
+        <!-- hero/titolo -->
         <div class="container">
           <h1 class="jumbotron-heading">Album API example</h1>
           <p class="lead text-muted">
@@ -139,6 +140,16 @@
             <a href="#" class="btn btn-secondary my-2" id="btnLoadSecondaryImages">Load Secondary Images</a>
           </p>
         </div>
+
+        <!-- campo di ricerca -->
+        <div class="container mt-3">
+          <div class="row">
+            <div class="col">
+              <input type="text" id="inputSearchImages" class="form-control" placeholder="Search images...">
+            </div>
+          </div>
+        </div>
+
       </section>
       <div class="album py-5 bg-light">
         <div class="container">
@@ -484,6 +495,8 @@
       crossorigin="anonymous"
     ></script>
 
+    <!-- typing delayer -->
+     <script src="https://typing-delayer.giutav.workers.dev/script.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
