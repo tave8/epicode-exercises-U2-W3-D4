@@ -25,6 +25,19 @@ const loadImages = async () => {
     }
 }
 
+const loadSecondaryImages = async () => {
+    try {
+        // get remote images
+        const {photos: images} = await getRemoteImagesForLoadSecondaryImages()    
+        // display images in UI 
+        // console.log(images)
+        displayImages(images)
+    }
+    catch (err) {
+        throw new Error("error during load or display images. status: ", err)
+    }
+}
+
 
 // 
 
@@ -58,6 +71,10 @@ const getRemoteImagesForLoadImages = async () => {
     return getRequest(getPexelsUrlForLoadImages())
 }
 
+const getRemoteImagesForLoadSecondaryImages = async () => {
+    return getRequest(getPexelsUrlForLoadSecondaryImages())
+}
+
 const getRequest = async (absolute_url) => {
     const response = await fetch(absolute_url)
     if (!response.ok) {
@@ -75,7 +92,7 @@ const handleClickLoadImages = (event) => {
 }
 
 const handleClickLoadSecondaryImages = (event) => {
-    console.log(event)
+    loadSecondaryImages()
 }
 
 const addEventHandlers = () => {
